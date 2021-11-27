@@ -1,4 +1,4 @@
-import {ADD_TODO,TOGGLE_TODO} from './actionTypes'
+import {ADD_TODO,TOGGLE_TODO} from '../actions/actionTypes'
 
 const todos = (state = [],action) => {
     switch (action.type) {
@@ -19,6 +19,7 @@ const todos = (state = [],action) => {
                             completed: !item.completed
                         }
                     }
+                    return item
                 })
             ]
         default:
