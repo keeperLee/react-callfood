@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import Todo from './Todo'
 class TodoList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-    }
 
     render() {
         const {todos, toggleTodo} = this.props;

@@ -1,27 +1,22 @@
-import {ADD_TODO,TOGGLE_TODO} from '../actions/actionTypes'
+import {ADD_TODO, TOGGLE_TODO} from '../actions/actionTypes'
 
-const todos = (state = [],action) => {
+const todos = (state = [], action) => {
     switch (action.type) {
         case ADD_TODO:
             return [...state,
-                    {
-                        text: action.text,
-                        completed: false
-                    }
-                ]
-        case TOGGLE_TODO:
-            return [
-                ...state,
-                state.map(item => {
-                    if (item.id === action.id) {
-                        return {
-                            ...item,
-                            completed: !item.completed
-                        }
-                    }
-                    return item
-                })
+                {
+                    id: action.id,
+                    text: action.text,
+                    completed: false
+                }
             ]
+        case TOGGLE_TODO:
+            return state.map(todo =>
+                (todo.id === action.id)
+                    ? {...todo, completed: !todo.completed}
+                    : todo
+            )
+
         default:
             return state;
     }
